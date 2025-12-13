@@ -8,13 +8,22 @@
 </head>
 <body>
 <div class="container">
-    <h1>Passkey Tutorial</h1>
+    <h1>Kalkulator Lingkaran (Passkey)</h1>
     <div id="message"></div>
 
-    <div class="input-group">
-        <input type="text" id="username" placeholder="Enter username">
+    <div id="auth-section" class="input-group">
+        <input type="text" id="username" placeholder="Masukkan username">
         <button id="registerButton">Register</button>
         <button id="loginButton">Login</button>
+    </div>
+
+    <div id="calculator-section" class="input-group" style="display:none; margin-top:20px;">
+        <h3>Hitung Luas & Keliling</h3>
+        <input type="number" id="radius" placeholder="Masukkan Jari-jari (r)">
+        <button id="calculateButton">Hitung</button>
+        
+        <div id="result" style="margin-top:15px; text-align:left;"></div>
+        <button onclick="location.reload()" style="background-color:#6c757d; margin-top:10px;">Logout / Reset</button>
     </div>
 </div>
 

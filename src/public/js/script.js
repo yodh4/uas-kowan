@@ -82,8 +82,41 @@ async function login() {
 
         if (verificationResponse.ok) {
             showMessage('Login successful');
+            // TAMBAHAN: Sembunyikan login, tampilkan kalkulator
+            document.getElementById('auth-section').style.display = 'none';
+            document.getElementById('calculator-section').style.display = 'block';
         } else {
             showMessage('Login failed', true);
+        }
+    } catch (error) {
+        showMessage('Error: ' + error.message, true);
+    }
+}
+
+// Listener untuk tombol hitung
+document.getElementById('calculateButton').addEventListener('click', calculateCircle);
+
+async function calculateCircle() {
+    const radius = document.getElementById('radius').value;
+    
+    try {
+        const response = await fetch('/api/passkey/calculate', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ radius: radius })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            document.getElementById('result').innerHTML = `
+                <p><strong>Jari-jari:</strong> ${data.radius}</p>
+                <p><strong>Luas:</strong> ${data.area}</p>
+                <p><strong>Keliling:</strong> ${data.circumference}</p>
+            `;
+            showMessage('Perhitungan berhasil', false);
+        } else {
+            showMessage(data.error || 'Gagal menghitung', true);
         }
     } catch (error) {
         showMessage('Error: ' + error.message, true);
