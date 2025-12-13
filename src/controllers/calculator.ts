@@ -26,7 +26,7 @@ export const calculateCircle = (req: Request, res: Response, next: NextFunction)
     });
 };
 
-// Helper kecil untuk cek NaN (opsional, bisa pakai isNaN bawaan)
+// Helper untuk cek NaN
 function isNaNTc(value: number): boolean {
     return Number.isNaN(value);
 }

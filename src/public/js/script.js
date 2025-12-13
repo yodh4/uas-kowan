@@ -82,7 +82,6 @@ async function login() {
 
         if (verificationResponse.ok) {
             showMessage('Login successful');
-            // TAMBAHAN: Sembunyikan login, tampilkan kalkulator
             document.getElementById('auth-section').style.display = 'none';
             document.getElementById('calculator-section').style.display = 'block';
         } else {
